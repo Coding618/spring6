@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/util
+       http://www.springframework.org/schema/util/spring-util.xsd
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+        1. 创建对象
+        2. 注入普通类型的属性
+        3. 使用util注入List，Map类型的属性
+        4. 在student bean中，引入util 类型，定义list，map类型属性注入
+    -->
+    <bean id="studentp" class="com.atguigu.spring6.iocxml.dimap.Student"
+    p:sId="100" p:sName="张兴宝" p:lessonList-ref="lessonList" p:teacherMap-ref="teacherMap"></bean>
+
+    <bean id="lessonOne" class="com.atguigu.spring6.iocxml.dimap.Lesson">
+        <property name="lessonName" value="Java开发"></property>
+    </bean>
+    <bean id="lessonTwo" class="com.atguigu.spring6.iocxml.dimap.Lesson">
+        <property name="lessonName" value="Cpp开发"></property>
+    </bean>
+
+    <bean id="teacherOne" class="com.atguigu.spring6.iocxml.dimap.Teacher">
+        <property name="teacherId" value="000001"></property>
+        <property name="teacherName" value="Jack老师"></property>
+    </bean>
+    <bean id="teacherTwo" class="com.atguigu.spring6.iocxml.dimap.Teacher">
+        <property name="teacherId" value="000002"></property>
+        <property name="teacherName" value="Ponny老师"></property>
+    </bean>
+
+    <util:map id="teacherMap">
+        <entry>
+            <key>
+                <value>10010</value>
+            </key>
+            <ref bean="teacherOne"></ref>
+        </entry>
+        <entry>
+            <key>
+                <value>10086</value>
+            </key>
+            <ref bean="teacherTwo"></ref>
+        </entry>
+    </util:map>
+
+    <util:list id="lessonList">
+        <ref bean="lessonOne"></ref>
+        <ref bean="lessonTwo"></ref>
+    </util:list>
+
+    <bean id="student" class="com.atguigu.spring6.iocxml.dimap.Student">
+        <property name="sId" value="001"></property>
+        <property name="sName" value="Jack"></property>
+        <!--  注入 list 和 map类型的属性      -->
+        <property name="lessonList" ref="lessonList"></property>
+        <property name="teacherMap" ref="teacherMap"></property>
+
+    </bean>
+
+
+</beans>

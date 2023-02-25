@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="empOne" class="com.atguigu.spring6.iocxml.ditest.Emp">
+        <property name="ename" value="正态"></property>
+        <property name="age" value="10"></property>
+    </bean>
+    <bean id="empTwo" class="com.atguigu.spring6.iocxml.ditest.Emp">
+        <property name="ename" value="连续岛"></property>
+        <property name="age" value="20"></property>
+    </bean>
+
+    <bean id="dept" class="com.atguigu.spring6.iocxml.ditest.Dept">
+        <property name="dname" value="技术部"></property>
+        <property name="empList">
+            <list>
+                <ref bean="empOne"></ref>
+                <ref bean="empTwo"></ref>
+            </list>
+        </property>
+    </bean>
+</beans>
