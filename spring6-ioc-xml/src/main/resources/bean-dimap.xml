@@ -9,7 +9,7 @@
         3. 在学生的bean中，注入Map集合类型属性
        -->
     <bean id="teacherOne" class="com.atguigu.spring6.iocxml.dimap.Teacher">
-        <property name="teacherId" value="10001"></property>
+        <property name="teacherId" value="10001"/>
         <property name="teacherName" value="东方老师"></property>
     </bean>
     <bean id="teacherTwo" class="com.atguigu.spring6.iocxml.dimap.Teacher">
