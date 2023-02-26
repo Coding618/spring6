@@ -11,6 +11,8 @@
     <modules>
         <module>spring-first</module>
         <module>spring6-ioc-xml</module>
+        <module>spring6-ioc-annotation</module>
+        <module>spring6-reflect</module>
     </modules>
 
     <properties>
@@ -43,6 +45,12 @@
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-slf4j2-impl</artifactId>
             <version>2.19.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>jakarta.annotation</groupId>
+            <artifactId>jakarta.annotation-api</artifactId>
+            <version>2.1.1</version>
         </dependency>
 
     </dependencies>
