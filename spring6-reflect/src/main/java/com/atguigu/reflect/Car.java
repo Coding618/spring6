@@ -20,6 +20,10 @@ public class Car {
         this.age = age;
         this.color = color;
     }
+    // 普通方法
+    private void run() {
+        System.out.println("private run~");
+    }
 
 
     //get set 方法
@@ -46,5 +50,14 @@ public class Car {
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", color='" + color + '\'' +
+                '}';
     }
 }
