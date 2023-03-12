@@ -2,11 +2,16 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context
-       http://www.springframework.org/schema/context/spring-context.xsd">
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd">
 
+    <!--扫描组件-->
+    <context:component-scan base-package="com.test.spring6.tx"></context:component-scan>
     <!-- 导入外部的jdbc属性配置文件-->
     <context:property-placeholder location="classpath:jdbc.properties"></context:property-placeholder>
 
@@ -24,5 +29,12 @@
         <!-- 装配数据源-->
         <property name="dataSource" ref="druidDataSource"></property>
     </bean>
+
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="druidDataSource"></property>
+    </bean>
+
+    <!--    开启事务的注解驱动-->
+    <tx:annotation-driven transaction-manager="transactionManager"></tx:annotation-driven>
 
 </beans>
